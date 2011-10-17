@@ -8,5 +8,6 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/sanshinclient"/>
 	<classpathentry kind="output" path="target/android-classes"/>
 </classpath>
