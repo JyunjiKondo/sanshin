@@ -14,6 +14,25 @@
         <module>sanshinclient-it</module>
     </modules>
 
+    <dependencies>
+    	<dependency>
+    		<groupId>com.pivotallabs</groupId>
+    		<artifactId>robolectric</artifactId>
+    		<version>1.0-RC1</version>
+    		<scope>test</scope>
+    	</dependency>
+    	<dependency>
+    		<groupId>org.roboguice</groupId>
+    		<artifactId>roboguice</artifactId>
+    		<version>2.0b2</version>
+    		<exclusions>
+    			<exclusion>
+    				<artifactId>compatibility-v13</artifactId>
+    				<groupId>android.support</groupId>
+    			</exclusion>
+    		</exclusions>
+    	</dependency>
+    </dependencies>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -43,7 +62,7 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.8.1</version>
+                <version>4.8.2</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
@@ -54,8 +73,8 @@
             <plugins>
                 <plugin>
                     <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-                    <artifactId>maven-android-plugin</artifactId>
-                    <version>3.0.0-alpha-2</version>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>3.0.0-alpha-12</version>
                     <inherited>true</inherited>
                     <configuration>
                         <androidManifestFile>${project.basedir}/AndroidManifest.xml</androidManifestFile>
