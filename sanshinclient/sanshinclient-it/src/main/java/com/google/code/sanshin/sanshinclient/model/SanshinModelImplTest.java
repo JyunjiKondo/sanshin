@@ -1,5 +1,5 @@
 
-package com.google.code.sanshin.sanshinclient.model.test;
+package com.google.code.sanshin.sanshinclient.model;
 
 import junit.framework.TestCase;
 

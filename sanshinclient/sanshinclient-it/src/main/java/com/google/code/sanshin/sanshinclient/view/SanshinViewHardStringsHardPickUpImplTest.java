@@ -1,5 +1,5 @@
 
-package com.google.code.sanshin.sanshinclient.view.test;
+package com.google.code.sanshin.sanshinclient.view;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.google.code.sanshin.sanshinclient.R;
-import com.google.code.sanshin.sanshinclient.view.SanshinViewHardStringsHardPickUpImpl;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 
 @RunWith(RobolectricTestRunner.class)
@@ -22,6 +21,11 @@ public class SanshinViewHardStringsHardPickUpImplTest {
 
     @After
     public void tearDown() throws Exception {
+    }
+
+    @Test
+    public void shouldInitializeNormally() throws Exception {
+        new SanshinViewHardStringsHardPickUpImpl().onCreate(null);
     }
 
     @Test
