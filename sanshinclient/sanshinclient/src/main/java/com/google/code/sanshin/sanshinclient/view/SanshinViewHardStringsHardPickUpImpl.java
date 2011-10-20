@@ -3,45 +3,48 @@ package com.google.code.sanshin.sanshinclient.view;
 
 import android.os.Bundle;
 
+import com.google.code.sanshin.sanshinclient.presenter.HardStringsHardPickUpPresenter;
+
 public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl {
+    private HardStringsHardPickUpPresenter mPresenter;
 
     public SanshinViewHardStringsHardPickUpImpl() {
-        // TODO Auto-generated constructor stub
+        mPresenter = new HardStringsHardPickUpPresenter(this);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        mPresenter.onCreate();
     }
 
     @Override
     protected void onDestroy() {
-        // TODO Auto-generated method stub
+        mPresenter.onDestroy();
         super.onDestroy();
     }
 
     @Override
     protected void onPause() {
-        // TODO Auto-generated method stub
+        mPresenter.onPause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        // TODO Auto-generated method stub
         super.onResume();
+        mPresenter.onResume();
     }
 
     @Override
     protected void onStart() {
-        // TODO Auto-generated method stub
         super.onStart();
+        mPresenter.onStart();
     }
 
     @Override
     protected void onStop() {
-        // TODO Auto-generated method stub
+        mPresenter.onStop();
         super.onStop();
     }
 
