@@ -33,6 +33,12 @@
     			</exclusion>
     		</exclusions>
     	</dependency>
+    	<dependency>
+    		<groupId>com.android.future</groupId>
+    		<artifactId>usb</artifactId>
+    		<version>14_r1</version>
+    		<scope>provided</scope>
+    	</dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -40,7 +46,7 @@
                 <groupId>com.google.android</groupId>
                 <artifactId>android</artifactId>
                 <version>
-                 2.2.1
+                 2.3.3
                                 </version>
                 <scope>provided</scope>
             </dependency>
@@ -48,7 +54,7 @@
                 <groupId>com.google.android</groupId>
                 <artifactId>android-test</artifactId>
                 <version>
-                 2.2.1
+                 2.3.3
                                 </version>
                 <scope>provided</scope>
             </dependency>
