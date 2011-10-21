@@ -11,12 +11,12 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class OpenAccessoryMock implements OpenAccessory {
-
+    private AccessoryListener mListener;
     @Inject
     Application mApplication;
 
     public void addListener(AccessoryListener listener) {
-        // TODO Auto-generated constructor stub
+        mListener = listener;
         Log.d("OpenAccessoryMock", "addListener");
     }
 
@@ -45,4 +45,7 @@ public class OpenAccessoryMock implements OpenAccessory {
         Log.d("OpenAccessoryMock", "onStop");
     }
 
+    public void sendMessage(byte[] data) {
+        mListener.onAccessoryMessage(data);
+    }
 }

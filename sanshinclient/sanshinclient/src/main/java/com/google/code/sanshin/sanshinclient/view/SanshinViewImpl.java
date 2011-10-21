@@ -2,11 +2,18 @@
 package com.google.code.sanshin.sanshinclient.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.code.sanshin.sanshinclient.midiplayer.MidiPlayerClient;
+import com.google.inject.Inject;
+
 public abstract class SanshinViewImpl extends Activity implements SanshinView {
-    private FingerPositionListener mFingerPositionListener = null;
-    private PickUpListener mPickUpListener = null;
+    protected FingerPositionListener mFingerPositionListener = null;
+    protected PickUpListener mPickUpListener = null;
+
+    @Inject
+    MidiPlayerClient mMidiPlayerClient;
 
     public SanshinViewImpl() {
         // TODO Auto-generated constructor stub
@@ -16,11 +23,12 @@ public abstract class SanshinViewImpl extends Activity implements SanshinView {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        mMidiPlayerClient.setActivity(this);
     }
 
     @Override
     protected void onDestroy() {
-        // TODO Auto-generated method stub
+        mMidiPlayerClient.onDestroy();
         super.onDestroy();
     }
 
@@ -48,6 +56,11 @@ public abstract class SanshinViewImpl extends Activity implements SanshinView {
         super.onStop();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mMidiPlayerClient.onActivityResult(requestCode, resultCode, data);
+    }
+
     public void addFingerPositionListener(FingerPositionListener listener) {
         mFingerPositionListener = listener;
     }
@@ -65,8 +78,7 @@ public abstract class SanshinViewImpl extends Activity implements SanshinView {
     }
 
     public void play(int noteNo, int velocity) {
-        // TODO Auto-generated method stub
-
+        mMidiPlayerClient.play(noteNo, velocity);
     }
 
 }

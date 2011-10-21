@@ -64,8 +64,10 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
     }
 
     public void onAccessoryMessage(byte[] data) {
-        // TODO Auto-generated method stub
-
+        if (data[0] == OpenAccessory.STRING_PICKED) {
+            mFingerPositionListener.onMaleStringFingerPositionChanged(data[1]);
+            mPickUpListener.onMaleStringPicked(data[2]);
+        }
     }
 
 }
