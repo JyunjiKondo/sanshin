@@ -8,5 +8,6 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/jkondo/Documents/workspace/sanshin/sanshinclient/sanshinclient/libs/net.clc.bt_library_1.0.0.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
