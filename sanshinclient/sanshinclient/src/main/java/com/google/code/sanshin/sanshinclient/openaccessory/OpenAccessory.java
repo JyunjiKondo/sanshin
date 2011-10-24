@@ -1,10 +1,14 @@
 
 package com.google.code.sanshin.sanshinclient.openaccessory;
 
+
+
+import android.content.Context;
+
 public interface OpenAccessory {
     public static final int STRING_PICKED = 5;
 
-    public void addListener(AccessoryListener listener);
+    public void onCreate(Context context);
 
     public void onDestroy();
 
@@ -15,4 +19,6 @@ public interface OpenAccessory {
     public void onStart();
 
     public void onStop();
+
+    public void addListener(AccessoryListener listener);
 }

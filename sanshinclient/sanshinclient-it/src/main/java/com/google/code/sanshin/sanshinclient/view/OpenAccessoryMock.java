@@ -1,23 +1,19 @@
 
 package com.google.code.sanshin.sanshinclient.view;
 
-import android.app.Application;
+import android.content.Context;
 import android.util.Log;
 
 import com.google.code.sanshin.sanshinclient.openaccessory.AccessoryListener;
 import com.google.code.sanshin.sanshinclient.openaccessory.OpenAccessory;
-import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 @Singleton
 public class OpenAccessoryMock implements OpenAccessory {
     private AccessoryListener mListener;
-    @Inject
-    Application mApplication;
 
-    public void addListener(AccessoryListener listener) {
-        mListener = listener;
-        Log.d("OpenAccessoryMock", "addListener");
+    public void onCreate(Context context) {
+
     }
 
     public void onDestroy() {
@@ -43,6 +39,11 @@ public class OpenAccessoryMock implements OpenAccessory {
     public void onStop() {
         // TODO Auto-generated method stub
         Log.d("OpenAccessoryMock", "onStop");
+    }
+
+    public void addListener(AccessoryListener listener) {
+        mListener = listener;
+        Log.d("OpenAccessoryMock", "addListener");
     }
 
     public void sendMessage(byte[] data) {

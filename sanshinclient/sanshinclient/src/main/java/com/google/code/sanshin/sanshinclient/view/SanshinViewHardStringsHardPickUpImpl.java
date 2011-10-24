@@ -24,6 +24,7 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter.onCreate();
+        mOpenAccessory.onCreate(this);
         mOpenAccessory.addListener(this);
         Log.d("SanshinViewHardStringsHardPickUpImpl", "onCreate");
     }
