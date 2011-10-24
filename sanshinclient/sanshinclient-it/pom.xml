@@ -3,12 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.google.code.sanshin</groupId>
+    <groupId>jp.gr.java_conf.jyukon.sanshin</groupId>
     <artifactId>sanshinclient-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <groupId>com.google.code.sanshin</groupId>
+  <groupId>jp.gr.java_conf.jyukon.sanshin</groupId>
   <artifactId>sanshinclient-it</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>apk</packaging>
@@ -31,14 +31,14 @@
       <artifactId>android-test</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.google.code.sanshin</groupId>
+      <groupId>jp.gr.java_conf.jyukon.sanshin</groupId>
       <artifactId>sanshinclient</artifactId>
       <type>apk</type>
       <version>0.0.1-SNAPSHOT</version>
       <classifier>${zipaligned-classifier}</classifier> <!--  classifier set according to the ran profile -->
     </dependency>
     <dependency>
-      <groupId>com.google.code.sanshin</groupId>
+      <groupId>jp.gr.java_conf.jyukon.sanshin</groupId>
       <artifactId>sanshinclient</artifactId>
       <type>jar</type>
       <version>0.0.1-SNAPSHOT</version>
