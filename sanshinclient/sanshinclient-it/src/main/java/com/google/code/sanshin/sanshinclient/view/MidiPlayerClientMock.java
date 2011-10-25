@@ -22,7 +22,7 @@ public class MidiPlayerClientMock implements MidiPlayerClient {
 
     }
 
-    public void setActivity(Activity activity) {
+    public void onCreate(Activity activity) {
         // TODO Auto-generated method stub
 
     }

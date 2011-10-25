@@ -23,7 +23,7 @@ public abstract class SanshinViewImpl extends Activity implements SanshinView {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        mMidiPlayerClient.setActivity(this);
+        mMidiPlayerClient.onCreate(this);
     }
 
     @Override
