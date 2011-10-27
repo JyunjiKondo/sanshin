@@ -22,11 +22,7 @@ public class MidiPlayerClientBTImpl implements MidiPlayerClient {
     private Context mContext;
     private net.clc.bt.Connection mConnection;
     private String mServerDevice = "";
-
-    // @Inject
-    // Application mApplication;
-
-    Activity mActivity;
+    private Activity mActivity;
 
     private OnMessageReceivedListener dataReceivedListener = new OnMessageReceivedListener() {
         public void OnMessageReceived(String device, String message) {
