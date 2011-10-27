@@ -15,75 +15,55 @@
     </modules>
 
     <dependencies>
-    	<dependency>
-    		<groupId>com.pivotallabs</groupId>
-    		<artifactId>robolectric</artifactId>
-    		<version>1.0</version>
-    		<scope>test</scope>
-    	</dependency>
-    	<dependency>
-    		<groupId>org.roboguice</groupId>
-    		<artifactId>roboguice</artifactId>
-    		<version>2.0b2</version>
-    		<scope>test</scope>
-    		<exclusions>
-    			<exclusion>
-    				<artifactId>compatibility-v13</artifactId>
-    				<groupId>android.support</groupId>
-    			</exclusion>
-    		</exclusions>
-    	</dependency>
-    	<dependency>
-    		<groupId>com.android.future</groupId>
-    		<artifactId>usb</artifactId>
-    		<version>14_r1</version>
-    		<scope>provided</scope>
-    	</dependency>
-    	<dependency>
-    		<groupId>net.clc</groupId>
-    		<artifactId>bt_library</artifactId>
-    		<version>1.0.0</version>
-    	</dependency>
-    	<dependency>
-    		<groupId>com.google.inject</groupId>
-    		<artifactId>guice</artifactId>
-    		<version>3.0</version>
-    		<type>jar</type>
-    		<classifier>no_aop</classifier>
-    		<scope>compile</scope>
-    	</dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.google.android</groupId>
-                <artifactId>android</artifactId>
-                <version>
-                 2.3.3
-                                </version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.google.android</groupId>
-                <artifactId>android-test</artifactId>
-                <version>
-                 2.3.3
-                                </version>
-                <scope>provided</scope>
-            </dependency>
-
             <!-- Androlog is a logging and reporting library for Android -->
             <dependency>
                 <groupId>de.akquinet.android.androlog</groupId>
                 <artifactId>androlog</artifactId>
                 <version>1.0.3</version>
             </dependency>
-
             <dependency>
             	<groupId>junit</groupId>
             	<artifactId>junit</artifactId>
             	<version>4.8.2</version>
             	<scope>test</scope>
+            </dependency>
+            <dependency>
+            	<groupId>com.google.inject</groupId>
+            	<artifactId>guice</artifactId>
+            	<version>3.0</version>
+            	<type>jar</type>
+            	<classifier>no_aop</classifier>
+            </dependency>
+            <dependency>
+            	<groupId>org.roboguice</groupId>
+            	<artifactId>roboguice</artifactId>
+            	<version>2.0b2</version>
+            </dependency>
+            <dependency>
+            	<groupId>com.pivotallabs</groupId>
+            	<artifactId>robolectric</artifactId>
+            	<version>1.0</version>
+            	<scope>test</scope>
+            </dependency>
+            <dependency>
+            	<groupId>net.clc</groupId>
+            	<artifactId>bt_library</artifactId>
+            	<version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.android</groupId>
+                <artifactId>android-test</artifactId>
+                <version>2.3.3</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.android</groupId>
+                <artifactId>android</artifactId>
+                <version>2.3.3</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
