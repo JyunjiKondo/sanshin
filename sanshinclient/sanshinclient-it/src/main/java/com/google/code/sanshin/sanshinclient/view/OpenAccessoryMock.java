@@ -4,6 +4,7 @@ package com.google.code.sanshin.sanshinclient.view;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.future.usb.UsbAccessory;
 import com.google.code.sanshin.sanshinclient.openaccessory.AccessoryListener;
 import com.google.code.sanshin.sanshinclient.openaccessory.OpenAccessory;
 import com.google.inject.Singleton;
@@ -46,7 +47,13 @@ public class OpenAccessoryMock implements OpenAccessory {
         Log.d("OpenAccessoryMock", "addListener");
     }
 
+    public UsbAccessory findAccessory() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
     public void sendMessage(byte[] data) {
         mListener.onAccessoryMessage(data);
     }
+
 }

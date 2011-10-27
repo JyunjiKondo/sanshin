@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.android.future.usb.UsbAccessory;
 import com.android.future.usb.UsbManager;
-import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 @Singleton
@@ -30,19 +29,21 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
     private PendingIntent mPermissionIntent;
     private boolean mPermissionRequestPending;
     private Context mContext;
+    private UsbManager mUsbManager;
     private ParcelFileDescriptor mFileDescriptor;
     private FileInputStream mInputStream;
     private FileOutputStream mOutputStream;
     boolean mForceTerminated = false;
     private AccessoryListener mListener = null;
 
-    @Inject
-    UsbManager mUsbManager;
+    public OpenAccessoryImpl() {
+        Log.d("OpenAccessoryImpl", "constructor");
+
+    }
 
     public void onCreate(Context context) {
         mContext = context;
-        // mUsbManager = UsbManager.getInstance(mContext);
-        mUsbManager = mUsbManager.getInstance(mContext);
+        mUsbManager = UsbManager.getInstance(mContext);
         mPermissionIntent = PendingIntent.getBroadcast(mContext, 0, new Intent(
                 ACTION_USB_PERMISSION), 0);
         IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
@@ -75,6 +76,11 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
 
     public void addListener(AccessoryListener listener) {
         mListener = listener;
+    }
+
+    public UsbAccessory findAccessory() {
+        UsbAccessory[] accessories = mUsbManager.getAccessoryList();
+        return (accessories == null ? null : accessories[0]);
     }
 
     private void openAccessory(UsbAccessory accessory) {
@@ -116,8 +122,7 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
     }
 
     private void findAndOpenAccessory() {
-        UsbAccessory[] accessories = mUsbManager.getAccessoryList();
-        UsbAccessory accessory = (accessories == null ? null : accessories[0]);
+        UsbAccessory accessory = findAccessory();
         if (accessory != null) {
             if (mUsbManager.hasPermission(accessory)) {
                 openAccessory(accessory);
