@@ -6,7 +6,6 @@ import net.clc.bt.Connection.OnConnectionLostListener;
 import net.clc.bt.Connection.OnConnectionServiceReadyListener;
 import net.clc.bt.Connection.OnMessageReceivedListener;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
@@ -19,7 +18,6 @@ public class MidiPlayerClientBTImpl implements MidiPlayerClient {
 
     private static final int SERVER_LIST_RESULT_CODE = 42;
 
-    private Context mContext;
     private net.clc.bt.Connection mConnection;
     private String mServerDevice = "";
     private Activity mActivity;
@@ -70,7 +68,8 @@ public class MidiPlayerClientBTImpl implements MidiPlayerClient {
                     disconnectedListener);
             Log.d(TAG, "onActivityResult " + device);
             if (connectionStatus != Connection.SUCCESS) {
-                Toast.makeText(mContext, "Unable to connect; please try again.", 1).show();
+                Toast.makeText(mActivity, "Unable to connect; please try again.", Toast.LENGTH_LONG)
+                        .show();
             } else {
                 mServerDevice = device;
                 Log.d(TAG, "onActivityResult mServerDevice" + mServerDevice);
