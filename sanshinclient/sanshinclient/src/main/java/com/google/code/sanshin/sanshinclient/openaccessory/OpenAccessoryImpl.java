@@ -21,6 +21,8 @@ import com.google.inject.Singleton;
 
 @Singleton
 public class OpenAccessoryImpl implements OpenAccessory, Runnable {
+    private static final String TAG = OpenAccessoryImpl.class.getSimpleName();
+
     private static final String ACTION_USB_PERMISSION = "com.google.code.sanshin.sanshinclient.openaccessory.USB_PERMISSION";
     public static final String ACTION_USB_ACCESSORY_ATTACHED = "com.google.code.sanshin.sanshinclient.openaccessory.USB_ACESSORY_ATTACHED";
 
@@ -37,8 +39,6 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
     private AccessoryListener mListener = null;
 
     public OpenAccessoryImpl() {
-        Log.d("OpenAccessoryImpl", "constructor");
-
     }
 
     public void onCreate(Context context) {
@@ -80,6 +80,7 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
 
     public UsbAccessory findAccessory() {
         UsbAccessory[] accessories = mUsbManager.getAccessoryList();
+        Log.d(TAG, "findAccessory: " + (accessories == null ? "null" : accessories[0].getModel()));
         return (accessories == null ? null : accessories[0]);
     }
 
@@ -92,12 +93,12 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
             mOutputStream = new FileOutputStream(fd);
             new Thread(this).start();
         } else {
-            Log.d("testclientprj", "openAccessory mFileDescriptor == null");
+            Log.d(TAG, "openAccessory: mFileDescriptor == null");
         }
     }
 
     private void closeAccessory() {
-        Log.d("testclientprj", "closeAccessory");
+        Log.d(TAG, "closeAccessory");
         try {
             if (mFileDescriptor != null) {
                 mForceTerminated = true;

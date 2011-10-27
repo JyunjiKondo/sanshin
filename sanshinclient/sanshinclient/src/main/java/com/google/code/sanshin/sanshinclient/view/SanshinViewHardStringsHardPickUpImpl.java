@@ -11,6 +11,8 @@ import com.google.code.sanshin.sanshinclient.presenter.HardStringsHardPickUpPres
 
 public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implements
         AccessoryListener {
+    private static final String TAG = SanshinViewHardStringsHardPickUpImpl.class.getSimpleName();
+
     private HardStringsHardPickUpPresenter mPresenter;
 
     // @Inject
@@ -29,7 +31,7 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
                 OpenAccessory.class);
         mOpenAccessory.onCreate(getApplicationContext());
         mOpenAccessory.addListener(this);
-        Log.d("SanshinViewHardStringsHardPickUpImpl", "onCreate");
+        Log.d(TAG, "onCreate");
     }
 
     @Override
@@ -41,6 +43,7 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
 
     @Override
     protected void onPause() {
+        Log.d(TAG, "onPause");
         mOpenAccessory.onPause();
         mPresenter.onPause();
         super.onPause();
@@ -48,6 +51,7 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
 
     @Override
     protected void onResume() {
+        Log.d(TAG, "onResume");
         super.onResume();
         mOpenAccessory.onResume();
         mPresenter.onResume();
@@ -68,6 +72,8 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
     }
 
     public void onAccessoryMessage(byte[] data) {
+        Log.d(TAG, "onAccessoryMessage:[" + data.length + "]" + data[0] + " " + data[1] + " "
+                + data[2]);
         if (data[0] == OpenAccessory.STRING_PICKED) {
             mFingerPositionListener.onMaleStringFingerPositionChanged(data[1]);
             mPickUpListener.onMaleStringPicked(data[2]);
