@@ -55,14 +55,14 @@ public class SanshinViewHardStringsHardPickUpImplTest {
         data[0] = OpenAccessory.STRING_PICKED;
         data[1] = 60; // noteNo
         data[2] = 100; // velocity
-        mOpenAccessoryMock.sendMessage(data);
+        mOpenAccessoryMock.sendMessage(data, 3);
         assertThat(mMidiPlayerClientMock.getNoteNo(), equalTo((int) data[1]));
         assertThat(mMidiPlayerClientMock.getVelocity(), equalTo((int) data[2]));
 
         data[0] = OpenAccessory.STRING_PICKED;
         data[1] = 50; // noteNo
         data[2] = 120; // velocity
-        mOpenAccessoryMock.sendMessage(data);
+        mOpenAccessoryMock.sendMessage(data, 3);
         assertThat(mMidiPlayerClientMock.getNoteNo(), equalTo((int) data[1]));
         assertThat(mMidiPlayerClientMock.getVelocity(), equalTo((int) data[2]));
 

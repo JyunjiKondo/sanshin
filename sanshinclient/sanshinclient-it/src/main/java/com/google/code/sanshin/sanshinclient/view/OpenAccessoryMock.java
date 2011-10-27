@@ -52,8 +52,7 @@ public class OpenAccessoryMock implements OpenAccessory {
         return null;
     }
 
-    public void sendMessage(byte[] data) {
-        mListener.onAccessoryMessage(data);
+    public void sendMessage(byte[] data, int length) {
+        mListener.onAccessoryMessage(data, length);
     }
-
 }

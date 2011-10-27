@@ -71,9 +71,8 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
         super.onStop();
     }
 
-    public void onAccessoryMessage(byte[] data) {
-        Log.d(TAG, "onAccessoryMessage:[" + data.length + "]" + data[0] + " " + data[1] + " "
-                + data[2]);
+    public void onAccessoryMessage(byte[] data, int length) {
+        Log.d(TAG, "onAccessoryMessage:[" + length + "]" + data[0] + " " + data[1] + " " + data[2]);
         if (data[0] == OpenAccessory.STRING_PICKED) {
             mFingerPositionListener.onMaleStringFingerPositionChanged(data[1]);
             mPickUpListener.onMaleStringPicked(data[2]);

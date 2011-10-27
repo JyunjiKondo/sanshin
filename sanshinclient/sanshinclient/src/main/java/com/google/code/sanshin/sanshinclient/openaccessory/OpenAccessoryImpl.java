@@ -175,16 +175,16 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
     };
 
     public void run() {
-        int ret = 0;
+        int length = 0;
         byte[] buffer = new byte[16384];
 
-        while (mForceTerminated == false && ret >= 0) {
+        while (mForceTerminated == false && length >= 0) {
             try {
-                ret = mInputStream.read(buffer);
+                length = mInputStream.read(buffer);
             } catch (IOException e) {
                 break;
             }
-            mListener.onAccessoryMessage(buffer);
+            mListener.onAccessoryMessage(buffer, length);
         }
         mForceTerminated = false;
     }
