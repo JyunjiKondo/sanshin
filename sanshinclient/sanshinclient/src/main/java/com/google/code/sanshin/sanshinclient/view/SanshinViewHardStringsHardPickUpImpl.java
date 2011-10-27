@@ -1,20 +1,21 @@
 
 package com.google.code.sanshin.sanshinclient.view;
 
+import roboguice.RoboGuice;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.google.code.sanshin.sanshinclient.openaccessory.AccessoryListener;
 import com.google.code.sanshin.sanshinclient.openaccessory.OpenAccessory;
 import com.google.code.sanshin.sanshinclient.presenter.HardStringsHardPickUpPresenter;
-import com.google.inject.Inject;
 
 public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implements
         AccessoryListener {
     private HardStringsHardPickUpPresenter mPresenter;
 
-    @Inject
-    OpenAccessory mOpenAccessory;
+    // @Inject
+    // OpenAccessory mOpenAccessory;
+    private OpenAccessory mOpenAccessory;
 
     public SanshinViewHardStringsHardPickUpImpl() {
         mPresenter = new HardStringsHardPickUpPresenter(this);
@@ -24,7 +25,9 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter.onCreate();
-        mOpenAccessory.onCreate(this);
+        mOpenAccessory = RoboGuice.getInjector(getApplicationContext()).getInstance(
+                OpenAccessory.class);
+        mOpenAccessory.onCreate(getApplicationContext());
         mOpenAccessory.addListener(this);
         Log.d("SanshinViewHardStringsHardPickUpImpl", "onCreate");
     }

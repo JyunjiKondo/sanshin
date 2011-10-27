@@ -1,19 +1,20 @@
 
 package com.google.code.sanshin.sanshinclient.view;
 
+import roboguice.RoboGuice;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.code.sanshin.sanshinclient.midiplayer.MidiPlayerClient;
-import com.google.inject.Inject;
 
 public abstract class SanshinViewImpl extends Activity implements SanshinView {
     protected FingerPositionListener mFingerPositionListener = null;
     protected PickUpListener mPickUpListener = null;
 
-    @Inject
-    MidiPlayerClient mMidiPlayerClient;
+    // @Inject
+    // MidiPlayerClient mMidiPlayerClient;
+    private MidiPlayerClient mMidiPlayerClient;
 
     public SanshinViewImpl() {
         // TODO Auto-generated constructor stub
@@ -23,6 +24,8 @@ public abstract class SanshinViewImpl extends Activity implements SanshinView {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        mMidiPlayerClient = RoboGuice.getInjector(getApplicationContext()).getInstance(
+                MidiPlayerClient.class);
         mMidiPlayerClient.onCreate(this);
     }
 
