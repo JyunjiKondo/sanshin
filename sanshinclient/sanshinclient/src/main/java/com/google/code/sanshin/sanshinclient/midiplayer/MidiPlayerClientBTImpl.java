@@ -6,24 +6,22 @@ import net.clc.bt.Connection.OnConnectionLostListener;
 import net.clc.bt.Connection.OnConnectionServiceReadyListener;
 import net.clc.bt.Connection.OnMessageReceivedListener;
 import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 @Singleton
-public abstract class MidiPlayerClientBTImpl implements MidiPlayerClient {
+public class MidiPlayerClientBTImpl implements MidiPlayerClient {
     private static final int SERVER_LIST_RESULT_CODE = 42;
 
     private Context mContext;
     private net.clc.bt.Connection mConnection;
     private String mServerDevice = "";
 
-    @Inject
-    Application mApplication;
+    // @Inject
+    // Application mApplication;
 
     Activity mActivity;
 
@@ -39,17 +37,17 @@ public abstract class MidiPlayerClientBTImpl implements MidiPlayerClient {
 
     private OnConnectionServiceReadyListener serviceReadyListener = new OnConnectionServiceReadyListener() {
         public void OnConnectionServiceReady() {
-            Intent serverListIntent = new Intent(mApplication, ServerListActivity.class);
+            Intent serverListIntent = new Intent(mActivity, ServerListActivity.class);
             mActivity.startActivityForResult(serverListIntent, SERVER_LIST_RESULT_CODE);
         }
     };
 
-    MidiPlayerClientBTImpl() {
-        mConnection = new Connection(mApplication, serviceReadyListener);
+    public MidiPlayerClientBTImpl() {
     }
 
     public void onCreate(Activity activity) {
         mActivity = activity;
+        mConnection = new Connection(mActivity.getApplicationContext(), serviceReadyListener);
     }
 
     public void onDestroy() {
