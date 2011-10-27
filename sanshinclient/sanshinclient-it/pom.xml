@@ -23,6 +23,12 @@
 
   <dependencies>
     <dependency>
+    	<groupId>com.android.future</groupId>
+    	<artifactId>usb</artifactId>
+    	<version>14_r1</version>
+    	<scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>com.google.android</groupId>
       <artifactId>android</artifactId>
     </dependency>
