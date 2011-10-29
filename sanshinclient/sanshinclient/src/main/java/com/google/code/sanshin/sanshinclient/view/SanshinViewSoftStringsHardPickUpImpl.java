@@ -15,6 +15,7 @@ import com.google.code.sanshin.sanshinclient.presenter.SoftStringsHardPickUpPres
 public class SanshinViewSoftStringsHardPickUpImpl extends SanshinViewImpl implements
         AccessoryListener {
     private static final String TAG = SanshinViewSoftStringsHardPickUpImpl.class.getSimpleName();
+    private static final int VELOCITY = 64;
 
     private SoftStringsHardPickUpPresenter mPresenter;
 
@@ -77,12 +78,25 @@ public class SanshinViewSoftStringsHardPickUpImpl extends SanshinViewImpl implem
         Log.d(TAG, "onStop");
     }
 
+    // Messages from DemoKit:
+    // 1 0 1 ... S1 pressed
+    // 1 1 1 ... S2 pressed
+    // 1 2 1 ... S3 pressed
     public void onAccessoryMessage(byte[] data, int length) {
         Log.d(TAG, "onAccessoryMessage:[" + length + "]" + data[0] + " " + data[1] + " " + data[2]);
-        // if (data[0] == OpenAccessory.STRING_PICKED) {
-        mFingerPositionListener.onMaleStringFingerPositionChanged(data[1]);
-        mPickUpListener.onMaleStringPicked(data[2]);
-        // }
+        if (data[0] == 1) {
+            switch (data[1]) {
+                case 0:
+                    mPickUpListener.onMaleStringPicked(VELOCITY);
+                    break;
+                case 1:
+                    mPickUpListener.onMiddleStringPicked(VELOCITY);
+                    break;
+                case 2:
+                    mPickUpListener.onFemaleStringPicked(VELOCITY);
+                    break;
+            }
+        }
     }
 
     public void onAccessoryDetached() {
