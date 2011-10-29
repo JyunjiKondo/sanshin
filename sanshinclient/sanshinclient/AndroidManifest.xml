@@ -17,7 +17,7 @@
     <activity android:name="com.google.code.sanshin.sanshinclient.view.SanshinViewHardStringsHardPickUpImpl" android:screenOrientation="portrait">
 	</activity>
         
-    <activity android:name="com.google.code.sanshin.sanshinclient.view.SanshinViewSoftStringsHardPickUpImpl" android:screenOrientation="portrait">
+    <activity android:name="com.google.code.sanshin.sanshinclient.view.SanshinViewSoftStringsHardPickUpImpl" android:theme="@android:style/Theme.Black.NoTitleBar" android:screenOrientation="portrait">
 	</activity>
 
     <activity android:name="com.google.code.sanshin.sanshinclient.view.SanshinViewSoftStringsSoftPickUpImpl" android:screenOrientation="portrait">

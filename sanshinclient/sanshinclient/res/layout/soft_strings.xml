@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <FrameLayout
+            android:id="@+id/frameLayoutVacant"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25" >
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayoutMale"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25" >
+
+            <ImageView
+                android:id="@+id/imageViewMale"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/string" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutMale"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/imageButtonMaleOpen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="0.12"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonMaleFret1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="0.22"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonMaleFret2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="0.22"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonMaleFret3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="0.22"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonMaleFret4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="0.22"
+                    android:src="@drawable/position_marker" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayoutMiddle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25" >
+
+            <ImageView
+                android:id="@+id/imageViewMiddle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/string" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutMiddle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/imageButtonMiddleOpen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="0.12"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonMiddleFret1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="0.22"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonMiddleFret2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="0.22"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonMiddleFret3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="0.22"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonMiddleFret4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="0.22"
+                    android:src="@drawable/position_marker" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameLayoutFemale"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25" >
+
+            <ImageView
+                android:id="@+id/imageViewFemale"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/string" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutFemale"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <ImageButton
+                    android:id="@+id/imageButtonFemaleOpen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.12"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonFemaleFret1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.22"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonFemaleFret2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.22"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonFemaleFret3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.22"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/position_marker" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonFemaleFret4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.22"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/position_marker" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>
