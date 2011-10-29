@@ -23,11 +23,11 @@
 #define MiddleStringId 2
 #define FemaleStringId 3
 
-AndroidAccessory acc("Google, Inc.",
-		     "DemoKit",
-		     "DemoKit Arduino Board",
+AndroidAccessory acc("Jyunji Kondo",
+		     "Sanshin Custom",
+		     "Sanshin Custom Board",
 		     "1.0",
-		     "http://www.android.com",
+		     "http://code.google.com/p/sanshin/",
 		     "0000000012345678");
 
 
