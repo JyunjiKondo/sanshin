@@ -53,7 +53,10 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
     }
 
     public void onDestroy() {
-        mContext.unregisterReceiver(mUsbReceiver);
+        if (mContext != null) {
+            mContext.unregisterReceiver(mUsbReceiver);
+            mContext = null;
+        }
     }
 
     public void onPause() {
