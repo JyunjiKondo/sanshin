@@ -1,7 +1,10 @@
 
 package com.google.code.sanshin.sanshinclient.view;
 
+import jp.gr.java_conf.jyukon.sanshin.sanshinclient.EntryActivity;
 import roboguice.RoboGuice;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -39,6 +42,7 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
         mOpenAccessory.onDestroy();
         mPresenter.onDestroy();
         super.onDestroy();
+        Log.d(TAG, "onDestroy");
     }
 
     @Override
@@ -62,6 +66,7 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
         super.onStart();
         mPresenter.onStart();
         mOpenAccessory.onStart();
+        Log.d(TAG, "onStart");
     }
 
     @Override
@@ -69,6 +74,7 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
         mOpenAccessory.onStop();
         mPresenter.onStop();
         super.onStop();
+        Log.d(TAG, "onStop");
     }
 
     public void onAccessoryMessage(byte[] data, int length) {
