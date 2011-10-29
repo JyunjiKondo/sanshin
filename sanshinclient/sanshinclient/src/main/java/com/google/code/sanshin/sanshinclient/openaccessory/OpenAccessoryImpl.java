@@ -17,9 +17,8 @@ import android.widget.Toast;
 
 import com.android.future.usb.UsbAccessory;
 import com.android.future.usb.UsbManager;
-import com.google.inject.Singleton;
 
-@Singleton
+//@Singleton
 public class OpenAccessoryImpl implements OpenAccessory, Runnable {
     private static final String TAG = OpenAccessoryImpl.class.getSimpleName();
 
@@ -88,6 +87,7 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
     }
 
     private void openAccessory(UsbAccessory accessory) {
+        Log.d(TAG, "openAccessory");
         mFileDescriptor = mUsbManager.openAccessory(accessory);
         if (mFileDescriptor != null) {
             mAccessory = accessory;
@@ -126,13 +126,17 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
     }
 
     private void findAndOpenAccessory() {
+        Log.d(TAG, "findAndOpenAccessory");
         UsbAccessory accessory = findAccessory();
         if (accessory != null) {
             if (mUsbManager.hasPermission(accessory)) {
+                Log.d(TAG, "findAndOpenAccessory: hasPermission");
                 openAccessory(accessory);
             } else {
                 synchronized (mUsbReceiver) {
+                    Log.d(TAG, "findAndOpenAccessory: chedk mPermissionRequestPending");
                     if (!mPermissionRequestPending) {
+                        Log.d(TAG, "findAndOpenAccessory: !mPermissionRequestPending");
                         mUsbManager.requestPermission(accessory, mPermissionIntent);
                         mPermissionRequestPending = true;
                     }
@@ -163,10 +167,12 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
             } else if (UsbManager.ACTION_USB_ACCESSORY_DETACHED.equals(action)) {
                 UsbAccessory accessory = UsbManager.getAccessory(intent);
                 if (accessory != null && accessory.equals(mAccessory)) {
-                    closeAccessory();
+                    // closeAccessory();
+                    mListener.onAccessoryDetached();
                 }
                 Toast.makeText(context, "ACTION_USB_ACCESSORY_DETACHED", Toast.LENGTH_LONG).show();
             } else if (ACTION_USB_ACCESSORY_ATTACHED.equals(action)) {
+                Log.d(TAG, "onReceive: ACTION_USB_ACCESSORY_ATTACHED");
                 findAndOpenAccessory();
                 // Toast.makeText(context, "ACTION_USB_ACCESSORY_ATTACHED",
                 // Toast.LENGTH_LONG).show();

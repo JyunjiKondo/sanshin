@@ -79,4 +79,15 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
         }
     }
 
+    public void onAccessoryDetached() {
+        Log.d(TAG, "onAccessoryDetached");
+        Intent intent = new Intent(this, EntryActivity.class);
+        Log.d(TAG, "try to start EntryActivity");
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Log.e(TAG, "unable to start EntryActivity", e);
+        }
+        finish();
+    }
 }
