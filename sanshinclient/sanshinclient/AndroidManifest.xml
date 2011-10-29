@@ -5,7 +5,7 @@
 
   <application android:icon="@drawable/icon" android:label="@string/app_name">
 
-    <activity android:name=".EntryActivity" android:taskAffinity="" android:screenOrientation="portrait">
+    <activity android:name=".EntryActivity" android:launchMode="singleInstance" android:screenOrientation="portrait">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
@@ -17,6 +17,12 @@
     <activity android:name="com.google.code.sanshin.sanshinclient.view.SanshinViewHardStringsHardPickUpImpl" android:screenOrientation="portrait">
 	</activity>
         
+    <activity android:name="com.google.code.sanshin.sanshinclient.view.SanshinViewSoftStringsHardPickUpImpl" android:screenOrientation="portrait">
+	</activity>
+
+    <activity android:name="com.google.code.sanshin.sanshinclient.view.SanshinViewSoftStringsSoftPickUpImpl" android:screenOrientation="portrait">
+	</activity>
+    
     <activity android:name="com.google.code.sanshin.sanshinclient.midiplayer.ServerListActivity" android:label="Pick your server" android:screenOrientation="portrait">
 	</activity>
 
