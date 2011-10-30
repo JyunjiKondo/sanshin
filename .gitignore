@@ -17,3 +17,6 @@ local.properties
 
 # maven
 target/
+
+# private settings
+sanshinclient/sanshinclient/src/main/java/jp/gr/java_conf/jyukon/sanshin/sanshinclient/config/MyGoogleAnalyticsConfig.java
