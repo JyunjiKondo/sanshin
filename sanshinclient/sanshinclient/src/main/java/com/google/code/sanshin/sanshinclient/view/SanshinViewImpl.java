@@ -2,13 +2,13 @@
 package com.google.code.sanshin.sanshinclient.view;
 
 import roboguice.RoboGuice;
-import android.app.Activity;
+import roboguice.activity.RoboActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.code.sanshin.sanshinclient.midiplayer.MidiPlayerClient;
 
-public abstract class SanshinViewImpl extends Activity implements SanshinView {
+public abstract class SanshinViewImpl extends RoboActivity implements SanshinView {
     protected FingerPositionListener mFingerPositionListener = null;
     protected PickUpListener mPickUpListener = null;
 
