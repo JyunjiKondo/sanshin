@@ -1,6 +1,9 @@
 
 package jp.gr.java_conf.jyukon.sanshin.sanshinclient;
 
+import jp.gr.java_conf.jyukon.sanshin.sanshinclient.config.DummyGoogleAnalyticsConfig;
+import jp.gr.java_conf.jyukon.sanshin.sanshinclient.config.GoogleAnalyticsConfig;
+
 import com.google.code.sanshin.sanshinclient.midiplayer.MidiPlayerClient;
 import com.google.code.sanshin.sanshinclient.midiplayer.MidiPlayerClientBTImpl;
 import com.google.code.sanshin.sanshinclient.openaccessory.OpenAccessory;
@@ -18,5 +21,6 @@ public class MyModule extends AbstractModule {
     protected void configure() {
         bind(OpenAccessory.class).to(OpenAccessoryImpl.class).in(Scopes.SINGLETON);
         bind(MidiPlayerClient.class).to(MidiPlayerClientBTImpl.class).in(Scopes.SINGLETON);
+        bind(GoogleAnalyticsConfig.class).to(DummyGoogleAnalyticsConfig.class);
     }
 }
