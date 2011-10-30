@@ -47,13 +47,18 @@ public class MidiPlayerClientBTImpl implements MidiPlayerClient {
 
     public void onCreate(Activity activity) {
         mActivity = activity;
-        mConnection = new Connection(mActivity.getApplicationContext(), serviceReadyListener);
+        if (mConnection == null) {
+            mConnection = new Connection(mActivity.getApplicationContext(), serviceReadyListener);
+        }
+        Log.d(TAG, "onCreate");
     }
 
     public void onDestroy() {
-        if (mConnection != null) {
-            mConnection.shutdown();
-        }
+        Log.d(TAG, "onDestroy");
+        // if (mConnection != null) {
+        // Log.d(TAG, "Connection.shutdown()");
+        // mConnection.shutdown();
+        // }
     }
 
     public void play(int noteNo, int velocity) {
