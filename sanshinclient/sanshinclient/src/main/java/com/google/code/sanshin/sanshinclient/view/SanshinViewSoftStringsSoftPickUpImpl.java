@@ -4,6 +4,7 @@ package com.google.code.sanshin.sanshinclient.view;
 import jp.gr.java_conf.jyukon.sanshin.sanshinclient.R;
 import roboguice.inject.InjectView;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,6 +28,7 @@ public class SanshinViewSoftStringsSoftPickUpImpl extends SanshinViewImpl {
     private static final int FEMALE_FRET2_NOTE = 76; // E5
     private static final int FEMALE_FRET3_NOTE = 77; // F5
     private static final int FEMALE_FRET4_NOTE = 79; // G5
+    private static final int VIBRATOR_DURATION = 50; // milliseconds.
 
     @InjectView(R.id.imageButtonMaleOpen)
     ImageButton imageButtonMaleOpen;
@@ -62,6 +64,7 @@ public class SanshinViewSoftStringsSoftPickUpImpl extends SanshinViewImpl {
     ImageButton imageButtonFemaleFret4;
 
     private SoftStringsSoftPickUpPresenter mPresenter;
+    private Vibrator mVibrator;
 
     // @Inject
     // OpenAccessory mOpenAccessory;
@@ -80,6 +83,7 @@ public class SanshinViewSoftStringsSoftPickUpImpl extends SanshinViewImpl {
         makeUnnecessaryImageButtonsInvisible();
         setImageButtonListeners();
         setInitialFingerPosition();
+        mVibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Log.d(TAG, "onCreate");
     }
 
@@ -116,6 +120,12 @@ public class SanshinViewSoftStringsSoftPickUpImpl extends SanshinViewImpl {
         mPresenter.onStop();
         super.onStop();
         Log.d(TAG, "onStop");
+    }
+
+    @Override
+    public void play(int noteNo, int velocity) {
+        mVibrator.vibrate(VIBRATOR_DURATION);
+        super.play(noteNo, velocity);
     }
 
     private void makeUnnecessaryImageButtonsInvisible() {

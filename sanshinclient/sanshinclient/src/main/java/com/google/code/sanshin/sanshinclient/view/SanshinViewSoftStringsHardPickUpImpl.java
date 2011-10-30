@@ -8,6 +8,7 @@ import roboguice.inject.InjectView;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,6 +34,7 @@ public class SanshinViewSoftStringsHardPickUpImpl extends SanshinViewImpl implem
     private static final int FEMALE_FRET2_NOTE = 76; // E5
     private static final int FEMALE_FRET3_NOTE = 77; // F5
     private static final int FEMALE_FRET4_NOTE = 79; // G5
+    private static final int VIBRATOR_DURATION = 50; // milliseconds.
 
     @InjectView(R.id.imageButtonMaleOpen)
     ImageButton imageButtonMaleOpen;
@@ -68,6 +70,7 @@ public class SanshinViewSoftStringsHardPickUpImpl extends SanshinViewImpl implem
     ImageButton imageButtonFemaleFret4;
 
     private SoftStringsHardPickUpPresenter mPresenter;
+    private Vibrator mVibrator;
 
     // @Inject
     // OpenAccessory mOpenAccessory;
@@ -91,6 +94,7 @@ public class SanshinViewSoftStringsHardPickUpImpl extends SanshinViewImpl implem
         makeUnnecessaryImageButtonsInvisible();
         setImageButtonListeners();
         setInitialFingerPosition();
+        mVibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         Log.d(TAG, "onCreate");
     }
 
@@ -165,6 +169,12 @@ public class SanshinViewSoftStringsHardPickUpImpl extends SanshinViewImpl implem
             Log.e(TAG, "unable to start EntryActivity", e);
         }
         finish();
+    }
+
+    @Override
+    public void play(int noteNo, int velocity) {
+        mVibrator.vibrate(VIBRATOR_DURATION);
+        super.play(noteNo, velocity);
     }
 
     private void makeUnnecessaryImageButtonsInvisible() {
