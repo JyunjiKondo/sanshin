@@ -23,7 +23,7 @@
 #define MiddleStringId 2
 #define FemaleStringId 3
 
-AndroidAccessory acc("Jyunji Kondo",
+AndroidAccessory acc("Jyukon",
 		     "Sanshin Custom",
 		     "Sanshin Custom Board",
 		     "1.0",
