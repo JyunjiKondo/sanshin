@@ -2,6 +2,7 @@
 package com.google.code.sanshin.sanshinclient.view;
 
 import jp.gr.java_conf.jyukon.sanshin.sanshinclient.EntryActivity;
+import jp.gr.java_conf.jyukon.sanshin.sanshinclient.R;
 import roboguice.RoboGuice;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -34,6 +35,7 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
                 OpenAccessory.class);
         mOpenAccessory.onCreate(getApplicationContext());
         mOpenAccessory.addListener(this);
+        setContentView(R.layout.hardhard);
         Log.d(TAG, "onCreate");
     }
 
