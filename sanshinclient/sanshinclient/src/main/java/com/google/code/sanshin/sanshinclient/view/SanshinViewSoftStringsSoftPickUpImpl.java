@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 import com.google.code.sanshin.sanshinclient.presenter.SoftStringsSoftPickUpPresenter;
 
 public class SanshinViewSoftStringsSoftPickUpImpl extends SanshinViewImpl {
-    private static final int VELOCITY = 64;
+    private static final int VELOCITY = 100;
     private static final int MALE_OPEN_NOTE = 60; // C4
     private static final int MALE_FRET1_NOTE = 62; // D4
     private static final int MALE_FRET2_NOTE = 64; // E4
