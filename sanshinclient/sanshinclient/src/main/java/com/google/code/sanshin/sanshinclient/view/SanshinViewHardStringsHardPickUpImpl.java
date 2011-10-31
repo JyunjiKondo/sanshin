@@ -79,12 +79,14 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
         Log.d(TAG, "onStop");
     }
 
+    // Messages from DemoKit:
+    // 1 noteNo velocity ... Male string picked
+    // 2 noteNo velocity ... Middle string picked
+    // 3 noteNo velocity ... Female string picked
     public void onAccessoryMessage(byte[] data, int length) {
         Log.d(TAG, "onAccessoryMessage:[" + length + "]" + data[0] + " " + data[1] + " " + data[2]);
-        if (data[0] == OpenAccessory.STRING_PICKED) {
-            mFingerPositionListener.onMaleStringFingerPositionChanged(data[1]);
-            mPickUpListener.onMaleStringPicked(data[2]);
-        }
+        mFingerPositionListener.onMaleStringFingerPositionChanged(data[1]);
+        mPickUpListener.onMaleStringPicked(data[2]);
     }
 
     public void onAccessoryDetached() {
