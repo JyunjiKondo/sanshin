@@ -10,7 +10,7 @@
 
   <groupId>jp.gr.java_conf.jyukon.sanshin</groupId>
   <artifactId>sanshinclient</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>apk</packaging>
   <name>sanshinclient - Application</name>
 
@@ -83,7 +83,8 @@
                     <lib>${rt.jar.path}</lib>
                     <lib>${jsse.jar.path}</lib>
                   </libs>
-                  <obfuscate>true</obfuscate>
+                  <skip>true</skip>
+                  <obfuscate>false</obfuscate>
                   <addMavenDescriptor>false</addMavenDescriptor>
                   <proguardInclude>${project.basedir}/proguard.conf</proguardInclude>
                 </configuration>
