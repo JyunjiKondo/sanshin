@@ -82,12 +82,10 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
 
     public UsbAccessory findAccessory() {
         UsbAccessory[] accessories = mUsbManager.getAccessoryList();
-        Log.d(TAG, "findAccessory: " + (accessories == null ? "null" : accessories[0].getModel()));
         return (accessories == null ? null : accessories[0]);
     }
 
     private void openAccessory(UsbAccessory accessory) {
-        Log.d(TAG, "openAccessory");
         mFileDescriptor = mUsbManager.openAccessory(accessory);
         if (mFileDescriptor != null) {
             mAccessory = accessory;
@@ -101,7 +99,6 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
     }
 
     private void closeAccessory() {
-        Log.d(TAG, "closeAccessory");
         try {
             if (mFileDescriptor != null) {
                 mForceTerminated = true;
@@ -126,17 +123,13 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
     }
 
     private void findAndOpenAccessory() {
-        Log.d(TAG, "findAndOpenAccessory");
         UsbAccessory accessory = findAccessory();
         if (accessory != null) {
             if (mUsbManager.hasPermission(accessory)) {
-                Log.d(TAG, "findAndOpenAccessory: hasPermission");
                 openAccessory(accessory);
             } else {
                 synchronized (mUsbReceiver) {
-                    Log.d(TAG, "findAndOpenAccessory: chedk mPermissionRequestPending");
                     if (!mPermissionRequestPending) {
-                        Log.d(TAG, "findAndOpenAccessory: !mPermissionRequestPending");
                         mUsbManager.requestPermission(accessory, mPermissionIntent);
                         mPermissionRequestPending = true;
                     }
@@ -157,28 +150,18 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
                     if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
                         openAccessory(accessory);
                     } else {
-                        // Log.d(TAG, "permission denied for accessory " +
-                        // accessory);
                     }
                     mPermissionRequestPending = false;
                 }
-                // Toast.makeText(context, "ACTION_USB_PERMISSION",
-                // Toast.LENGTH_LONG).show();
             } else if (UsbManager.ACTION_USB_ACCESSORY_DETACHED.equals(action)) {
                 UsbAccessory accessory = UsbManager.getAccessory(intent);
                 if (accessory != null && accessory.equals(mAccessory)) {
-                    // closeAccessory();
                     mListener.onAccessoryDetached();
                 }
                 Toast.makeText(context, "ACTION_USB_ACCESSORY_DETACHED", Toast.LENGTH_LONG).show();
             } else if (ACTION_USB_ACCESSORY_ATTACHED.equals(action)) {
-                Log.d(TAG, "onReceive: ACTION_USB_ACCESSORY_ATTACHED");
                 findAndOpenAccessory();
-                // Toast.makeText(context, "ACTION_USB_ACCESSORY_ATTACHED",
-                // Toast.LENGTH_LONG).show();
             } else {
-                // Toast.makeText(context, "unknown intent",
-                // Toast.LENGTH_LONG).show();
             }
         }
     };

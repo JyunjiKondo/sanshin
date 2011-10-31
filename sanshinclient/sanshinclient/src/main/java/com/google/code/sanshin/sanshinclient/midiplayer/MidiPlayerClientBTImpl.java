@@ -7,7 +7,6 @@ import net.clc.bt.Connection.OnConnectionServiceReadyListener;
 import net.clc.bt.Connection.OnMessageReceivedListener;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.inject.Singleton;
@@ -24,19 +23,16 @@ public class MidiPlayerClientBTImpl implements MidiPlayerClient {
 
     private OnMessageReceivedListener dataReceivedListener = new OnMessageReceivedListener() {
         public void OnMessageReceived(String device, String message) {
-            Log.d(TAG, "OnMessageReceived");
         }
     };
 
     private OnConnectionLostListener disconnectedListener = new OnConnectionLostListener() {
         public void OnConnectionLost(String device) {
-            Log.d(TAG, "OnConnectionLost");
         }
     };
 
     private OnConnectionServiceReadyListener serviceReadyListener = new OnConnectionServiceReadyListener() {
         public void OnConnectionServiceReady() {
-            Log.d(TAG, "OnConnectionServiceReady");
             Intent serverListIntent = new Intent(mActivity, ServerListActivity.class);
             mActivity.startActivityForResult(serverListIntent, SERVER_LIST_RESULT_CODE);
         }
@@ -50,11 +46,9 @@ public class MidiPlayerClientBTImpl implements MidiPlayerClient {
         if (mConnection == null) {
             mConnection = new Connection(mActivity.getApplicationContext(), serviceReadyListener);
         }
-        Log.d(TAG, "onCreate");
     }
 
     public void onDestroy() {
-        Log.d(TAG, "onDestroy");
         // if (mConnection != null) {
         // Log.d(TAG, "Connection.shutdown()");
         // mConnection.shutdown();
@@ -62,7 +56,6 @@ public class MidiPlayerClientBTImpl implements MidiPlayerClient {
     }
 
     public void play(int noteNo, int velocity) {
-        Log.d(TAG, "play: " + noteNo + " " + velocity);
         mConnection.sendMessage(mServerDevice, noteNo + " " + velocity);
     }
 
@@ -71,13 +64,11 @@ public class MidiPlayerClientBTImpl implements MidiPlayerClient {
             String device = data.getStringExtra(ServerListActivity.EXTRA_SELECTED_ADDRESS);
             int connectionStatus = mConnection.connect(device, dataReceivedListener,
                     disconnectedListener);
-            Log.d(TAG, "onActivityResult " + device);
             if (connectionStatus != Connection.SUCCESS) {
                 Toast.makeText(mActivity, "Unable to connect; please try again.", Toast.LENGTH_LONG)
                         .show();
             } else {
                 mServerDevice = device;
-                Log.d(TAG, "onActivityResult mServerDevice" + mServerDevice);
             }
             return;
         }

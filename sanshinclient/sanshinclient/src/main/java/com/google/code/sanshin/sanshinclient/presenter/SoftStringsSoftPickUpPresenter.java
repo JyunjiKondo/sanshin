@@ -1,8 +1,6 @@
 
 package com.google.code.sanshin.sanshinclient.presenter;
 
-import android.util.Log;
-
 import com.google.code.sanshin.sanshinclient.model.SanshinModelImpl;
 import com.google.code.sanshin.sanshinclient.model.SanshinModelListener;
 import com.google.code.sanshin.sanshinclient.view.FingerPositionListener;
@@ -11,7 +9,6 @@ import com.google.code.sanshin.sanshinclient.view.SanshinView;
 
 public class SoftStringsSoftPickUpPresenter implements SanshinModelListener,
         FingerPositionListener, PickUpListener {
-    private static final String TAG = SoftStringsSoftPickUpPresenter.class.getSimpleName();
 
     private SanshinView mView;
     private SanshinModelImpl mModel;
@@ -54,7 +51,6 @@ public class SoftStringsSoftPickUpPresenter implements SanshinModelListener,
     }
 
     public void onMaleStringPicked(int velocity) {
-        Log.d(TAG, "onMaleStringPicked: " + velocity);
         mModel.pickMaleString(velocity);
     }
 
@@ -67,7 +63,6 @@ public class SoftStringsSoftPickUpPresenter implements SanshinModelListener,
     }
 
     public void onMaleStringFingerPositionChanged(int noteNo) {
-        Log.d(TAG, "onMaleStringFingerPositionChanged: " + noteNo);
         mModel.setMaleStringNote(noteNo);
     }
 
@@ -80,7 +75,6 @@ public class SoftStringsSoftPickUpPresenter implements SanshinModelListener,
     }
 
     public void play(int noteNo, int velocity) {
-        Log.d(TAG, "play: " + noteNo + " " + velocity);
         mView.play(noteNo, velocity);
     }
 

@@ -39,14 +39,11 @@ public class EntryActivity extends Activity {
 
         if ("Sanshin Custom".equals(accessoryModel)) {
             intent = new Intent(this, SanshinViewHardStringsHardPickUpImpl.class);
-            Log.d(TAG, "onCreate: try to start SanshinViewHardStringsHardPickUpImpl");
         } else if ("DemoKit".equals(accessoryModel)) {
             intent = new Intent(this, SanshinViewSoftStringsHardPickUpImpl.class);
-            Log.d(TAG, "onCreate: try to start SanshinViewSoftStringsHardPickUpImpl");
         } else {
             // Accessory is not attached or unknown accessory.
             intent = new Intent(this, SanshinViewSoftStringsSoftPickUpImpl.class);
-            Log.d(TAG, "onCreate: try to start SanshinViewSoftStringsSoftPickUpImpl");
         }
         try {
             startActivity(intent);
@@ -57,7 +54,6 @@ public class EntryActivity extends Activity {
         GoogleAnalyticsConfig config = RoboGuice.getInjector(getApplicationContext()).getInstance(
                 GoogleAnalyticsConfig.class);
         String webPropertyId = config.getWebPropertyId();
-        Log.d(TAG, "web property ID " + webPropertyId);
         if (webPropertyId != null) {
             mTracker = GoogleAnalyticsTracker.getInstance();
             mTracker.startNewSession(config.getWebPropertyId(), this);

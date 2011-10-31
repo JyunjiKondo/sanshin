@@ -9,6 +9,7 @@ import android.os.Bundle;
 import com.google.code.sanshin.sanshinclient.midiplayer.MidiPlayerClient;
 
 public abstract class SanshinViewImpl extends RoboActivity implements SanshinView {
+
     protected FingerPositionListener mFingerPositionListener = null;
     protected PickUpListener mPickUpListener = null;
 

@@ -36,7 +36,6 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
         mOpenAccessory.onCreate(getApplicationContext());
         mOpenAccessory.addListener(this);
         setContentView(R.layout.hardhard);
-        Log.d(TAG, "onCreate");
     }
 
     @Override
@@ -44,12 +43,10 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
         mOpenAccessory.onDestroy();
         mPresenter.onDestroy();
         super.onDestroy();
-        Log.d(TAG, "onDestroy");
     }
 
     @Override
     protected void onPause() {
-        Log.d(TAG, "onPause");
         mOpenAccessory.onPause();
         mPresenter.onPause();
         super.onPause();
@@ -57,7 +54,6 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
 
     @Override
     protected void onResume() {
-        Log.d(TAG, "onResume");
         super.onResume();
         mOpenAccessory.onResume();
         mPresenter.onResume();
@@ -68,7 +64,6 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
         super.onStart();
         mPresenter.onStart();
         mOpenAccessory.onStart();
-        Log.d(TAG, "onStart");
     }
 
     @Override
@@ -76,7 +71,6 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
         mOpenAccessory.onStop();
         mPresenter.onStop();
         super.onStop();
-        Log.d(TAG, "onStop");
     }
 
     // Messages from DemoKit:
@@ -84,15 +78,12 @@ public class SanshinViewHardStringsHardPickUpImpl extends SanshinViewImpl implem
     // 2 noteNo velocity ... Middle string picked
     // 3 noteNo velocity ... Female string picked
     public void onAccessoryMessage(byte[] data, int length) {
-        Log.d(TAG, "onAccessoryMessage:[" + length + "]" + data[0] + " " + data[1] + " " + data[2]);
         mFingerPositionListener.onMaleStringFingerPositionChanged(data[1]);
         mPickUpListener.onMaleStringPicked(data[2]);
     }
 
     public void onAccessoryDetached() {
-        Log.d(TAG, "onAccessoryDetached");
         Intent intent = new Intent(this, EntryActivity.class);
-        Log.d(TAG, "try to start EntryActivity");
         try {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {

@@ -5,16 +5,13 @@ import jp.gr.java_conf.jyukon.sanshin.sanshinclient.R;
 import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.google.code.sanshin.sanshinclient.openaccessory.OpenAccessory;
 import com.google.code.sanshin.sanshinclient.presenter.SoftStringsSoftPickUpPresenter;
 
 public class SanshinViewSoftStringsSoftPickUpImpl extends SanshinViewImpl {
-    private static final String TAG = SanshinViewSoftStringsSoftPickUpImpl.class.getSimpleName();
     private static final int VELOCITY = 64;
     private static final int MALE_OPEN_NOTE = 60; // C4
     private static final int MALE_FRET1_NOTE = 62; // D4
@@ -66,10 +63,6 @@ public class SanshinViewSoftStringsSoftPickUpImpl extends SanshinViewImpl {
     private SoftStringsSoftPickUpPresenter mPresenter;
     private Vibrator mVibrator;
 
-    // @Inject
-    // OpenAccessory mOpenAccessory;
-    private OpenAccessory mOpenAccessory;
-
     public SanshinViewSoftStringsSoftPickUpImpl() {
         mPresenter = new SoftStringsSoftPickUpPresenter(this);
     }
@@ -84,26 +77,22 @@ public class SanshinViewSoftStringsSoftPickUpImpl extends SanshinViewImpl {
         setImageButtonListeners();
         setInitialFingerPosition();
         mVibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-        Log.d(TAG, "onCreate");
     }
 
     @Override
     protected void onDestroy() {
         mPresenter.onDestroy();
         super.onDestroy();
-        Log.d(TAG, "onDestroy");
     }
 
     @Override
     protected void onPause() {
-        Log.d(TAG, "onPause");
         mPresenter.onPause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        Log.d(TAG, "onResume");
         super.onResume();
         mPresenter.onResume();
     }
@@ -112,14 +101,12 @@ public class SanshinViewSoftStringsSoftPickUpImpl extends SanshinViewImpl {
     protected void onStart() {
         super.onStart();
         mPresenter.onStart();
-        Log.d(TAG, "onStart");
     }
 
     @Override
     protected void onStop() {
         mPresenter.onStop();
         super.onStop();
-        Log.d(TAG, "onStop");
     }
 
     @Override
