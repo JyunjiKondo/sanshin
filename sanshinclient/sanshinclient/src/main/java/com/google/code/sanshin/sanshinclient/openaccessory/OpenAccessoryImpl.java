@@ -103,8 +103,8 @@ public class OpenAccessoryImpl implements OpenAccessory, Runnable {
             if (mFileDescriptor != null) {
                 mForceTerminated = true;
                 mOutputStream.write(new byte[] {
-                        1, 2, 3
-                }); // 1, 2, 3は、3バイトのダミーデータ。ADKはこれを受け取ると3バイトのデータを書き出す。
+                        5, 6, 7
+                }); // 5, 6, 7は、3バイトのダミーデータ。ADKはこれを受け取ると3バイトのデータを書き出す。
             }
         } catch (IOException e) {
             mForceTerminated = false;
